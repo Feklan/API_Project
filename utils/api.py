@@ -42,4 +42,31 @@ class Goggle_maps_api():
         result_get = Http_methods.get(get_url)
         print(result_get.text)
         return result_get
+    """Метод для изменения новой локации"""
 
+    @staticmethod
+    def put_new_place(place_id):
+        put_resourse =  "/maps/api/place/update/json"  # Ресур метода PUT
+        put_url = base_url + put_resourse + key
+        print(put_url)
+        json_for_update_new_location = {
+            "place_id": place_id,
+            "address": "100 Lenina street, RU",
+            "key": "qaclick123"
+        }
+        result_put = Http_methods.put(put_url,json_for_update_new_location)
+        print(result_put.text)
+        return result_put
+
+    """Метод для удаления новой локации"""
+    @staticmethod
+    def delete_new_place(place_id):
+        delete_resourse = "/maps/api/place/delete/json"  # Ресур метода PUT
+        delete_url = base_url + delete_resourse + key
+        print(delete_url)
+        json_for_delete_new_location = {
+            "place_id": place_id
+        }
+        result_delete = Http_methods.put(delete_url, json_for_delete_new_location)
+        print(result_delete.text)
+        return result_delete
