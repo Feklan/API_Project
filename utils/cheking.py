@@ -21,18 +21,34 @@ class Cheaking():
         assert list(token) == expected_value
         print("Все поля присутствуют")
 
-        """Метод для проверки значений обязательных полей в ответе запросов"""
-    @staticmethod
-    def check_json_value(response: Response, field_name, expected_value):
-        check = response.json()
-        check_info = check.get(field_name)
-        assert check_info == expected_value
-        print(field_name + " Верен!!!")
+       # """Метод для проверки значений обязательных полей в ответе запросов"""
+    # @staticmethod
+    # def check_json_value(response: Response, field_name, expected_value):
+    #     check = response.json()
+    #     check_info = check.get(field_name)
+    #     assert check_info == expected_value
+    #     print(field_name + " Верен!!!")
 
-        """Метод для проверки значений обязательных полей в ответе запросов по заданному слову"""
     @staticmethod
-    def check_json_search_word_in_value(response: Response, field_name, search_word):
-        check = response.json()
+    def check_json_value(result, field_name, expected_value):
+            check = result.json()
+            check_info = check.get(field_name)
+            assert check_info == expected_value
+            print(field_name + " Верен!!!")
+
+    """Метод для проверки значений обязательных полей в ответе запросов по заданному слову"""
+    # @staticmethod
+    # def check_json_search_word_in_value(response: Response, field_name, search_word):
+    #     check = response.json()
+    #     check_info = check.get(field_name)
+    #     if search_word in check_info:
+    #         print("Слово " + search_word + " присутствует!!!")
+    #     else:
+    #         print("Слово " + search_word + " ОТСУТСТВУЕТ!!!")
+
+    @staticmethod
+    def check_json_search_word_in_value(result, field_name, search_word):
+        check = result.json()
         check_info = check.get(field_name)
         if search_word in check_info:
             print("Слово " + search_word + " присутствует!!!")
